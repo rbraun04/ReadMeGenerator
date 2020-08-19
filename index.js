@@ -30,8 +30,14 @@ inquirer
     name: "test"
   },
   {
-    message: "Enter your GitHub link",
-    name: "link"
+    type: "checkbox",
+    message: "What licenses do you have?",
+    name: "stack",
+    choices: [
+      "Boost", 
+      "Issues", 
+      "MIT License", 
+    ]
   },
   {
     message: "Enter your GitHub link",
@@ -48,7 +54,7 @@ inquirer
   
   ])
   .then(function(response) {
-      const myReadme = `<h3 align = "center">## ${response.title}</h3>
+      const myReadme = `<h3 align = "center">## ${response.title} </h3>
                         \n ## Project Description 
                         \n ## Table of Contents
 * [Project Description](#project-description)
@@ -63,6 +69,11 @@ inquirer
     [![Issues][issues-shield]][issues-url]
     [![MIT License][license-shield]][license-url]
     [![LinkedIn][linkedin-shield]][linkedin-url]
+    [![Boost][Boost-shield]][Boost-url]
+    [![${response.stack[0]}][${response.stack[0]}-shield]][${response.stack[0]}-url]
+    [![${response.stack[1]}][${response.stack[1]}-shield]][${response.stack[1]}-url]
+    [![${response.stack[2]}][${response.stack[2]}-shield]][${response.stack[2]}-url]
+
     
     ${response.description}
                         \n ## Installation Instructions\n
@@ -73,7 +84,21 @@ inquirer
     ${response.contribution}
                         \n ## Test Instructions\n 
     ${response.test}
-    [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square 
+\n 
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square 
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[Boost-shield]: https://img.shields.io/badge/License-Boost%201.0-lightblue.svg
+[Boost-url]: https://www.boost.org/LICENSE_1_0.txt
                         ##Repo link - ${response.link}`
     
 
@@ -123,17 +148,17 @@ inquirer
 //       name: "name",
 //       message: "What is your name?"
 //     },
-//     {
-//       type: "checkbox",
-//       message: "What languages do you know?",
-//       name: "stack",
-//       choices: [
-//         "HTML", 
-//         "CSS", 
-//         "JavaScript", 
-//         "MySQL"
-//       ]
-//     },
+    // {
+    //   type: "checkbox",
+    //   message: "What languages do you know?",
+    //   name: "stack",
+    //   choices: [
+    //     "HTML", 
+    //     "CSS", 
+    //     "JavaScript", 
+    //     "MySQL"
+    //   ]
+    // },
 //     {
 //       type: "list",
 //       message: "What is your preferred method of communication?",
