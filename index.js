@@ -48,16 +48,35 @@ inquirer
   
   ])
   .then(function(response) {
-      const myReadme = `# ${response.title}
+      const myReadme = `<h3 align = "center">## ${response.title}</h3>
                         \n ## Project Description 
-${response.description}
+                        \n ## Table of Contents
+* [Project Description](#project-description)
+* [Installation Instructions](#installation-instructions)
+* [Usage Information](#usage-information)
+* [Contribution Guidelines](#contribution-guidelines)
+* [Test Instructions](#test-instructions)
+
+    \n [![Contributors][contributors-shield]][contributors-url]
+    [![Forks][forks-shield]][forks-url]
+    [![Stargazers][stars-shield]][stars-url]
+    [![Issues][issues-shield]][issues-url]
+    [![MIT License][license-shield]][license-url]
+    [![LinkedIn][linkedin-shield]][linkedin-url]
+    
+    ${response.description}
                         \n ## Installation Instructions\n
-${response.installation}
-                        \n ## Usage Information\n ${response.usage} \n
-                        \n ## Contribution Guidelines\n ${response.contribution} \n
-                        \n ## Test Instructions\n ${response.test} \n
-                        
+    ${response.installation}
+                        \n ## Usage Information\n 
+    ${response.usage}
+                        \n ## Contribution Guidelines\n 
+    ${response.contribution}
+                        \n ## Test Instructions\n 
+    ${response.test}
+    [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square 
                         ##Repo link - ${response.link}`
+    
+
       fs.writeFile("README.md", myReadme, function(err) {
         if (err) {
           throw err;
