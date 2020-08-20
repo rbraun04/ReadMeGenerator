@@ -31,22 +31,24 @@ inquirer
   },
   {
     type: "checkbox",
-    message: "What licenses do you have?",
+    message: "Select if you have a Boost license:",
     name: "stack",
     choices: [
       "Boost", 
-      "Issues", 
-      "MIT License", 
     ]
   },
   {
-    message: "Enter your GitHub link",
-    name: "link"
+    message: "Enter your GitHub username",
+    name: "username"
   },
   {
-    message: "Enter your GitHub link",
-    name: "link"
-  }
+    message: "Enter your email",
+    name: "email"
+  },
+  {
+    message: "Enter your LinkedIn username",
+    name: "linkedin"
+  },
 
   
   
@@ -54,7 +56,18 @@ inquirer
   
   ])
   .then(function(response) {
-      const myReadme = `<h3 align = "center">## ${response.title} </h3>
+    var boost = [response.stack[0]]
+   
+   
+    for(let i = 0; i <boost.length; i++ ){
+      if (boost[i] === undefined ){
+            boost = [];
+          }else  {
+            boost = '[![Boost][Boost-shield]][Boost-url]';
+          }}
+
+
+      const myReadme = `${boost} <h3 align = "center">## ${response.title} </h3>
                         \n ## Project Description 
                         \n ## Table of Contents
 * [Project Description](#project-description)
@@ -62,17 +75,12 @@ inquirer
 * [Usage Information](#usage-information)
 * [Contribution Guidelines](#contribution-guidelines)
 * [Test Instructions](#test-instructions)
+* [Questions](#questions)
 
-    \n [![Contributors][contributors-shield]][contributors-url]
-    [![Forks][forks-shield]][forks-url]
-    [![Stargazers][stars-shield]][stars-url]
-    [![Issues][issues-shield]][issues-url]
-    [![MIT License][license-shield]][license-url]
-    [![LinkedIn][linkedin-shield]][linkedin-url]
+    \n 
+## Licenses    
+    This applicaiton is covered with:
     [![Boost][Boost-shield]][Boost-url]
-    [![${response.stack[0]}][${response.stack[0]}-shield]][${response.stack[0]}-url]
-    [![${response.stack[1]}][${response.stack[1]}-shield]][${response.stack[1]}-url]
-    [![${response.stack[2]}][${response.stack[2]}-shield]][${response.stack[2]}-url]
 
     
     ${response.description}
@@ -84,23 +92,20 @@ inquirer
     ${response.contribution}
                         \n ## Test Instructions\n 
     ${response.test}
-\n 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square 
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+                        \n ## Questions\n 
+                        Feel free to contact me via Gifthub or by my e-mail!
+Github Username:  ${response.username}
+\n <a href = "https://github.com/${response.username}">GitHub</a> - Click to go to my profile!
+\n Email:  ${response.email}
+\n [![LinkedIn][linkedin-shield]][linkedin-url]
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://linkedin.com/in/${response.linkedin}
 [Boost-shield]: https://img.shields.io/badge/License-Boost%201.0-lightblue.svg
 [Boost-url]: https://www.boost.org/LICENSE_1_0.txt
                         ##Repo link - ${response.link}`
-    
+
+
 
       fs.writeFile("README.md", myReadme, function(err) {
         if (err) {
