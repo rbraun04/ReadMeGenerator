@@ -6,7 +6,7 @@ var fs = require('fs');
 
 inquirer
   .prompt([{
-    message: "Enter the titel of your project:",
+    message: "Enter the title of your project:",
     name: "title"
   },
   {
@@ -139,53 +139,3 @@ Github Username:  ${response.username}
 
 
 
-
-// fs.appendFile("./README.md", "<br><p> ## Table of Contents " + "hello/t", (err) => {
-//     if(err) {
-//         console.log(err);
-//     } 
-//     });
-
-
-// inquirer.prompt([
-//     {
-//       type: "input",
-//       name: "name",
-//       message: "What is your name?"
-//     },
-    // {
-    //   type: "checkbox",
-    //   message: "What languages do you know?",
-    //   name: "stack",
-    //   choices: [
-    //     "HTML", 
-    //     "CSS", 
-    //     "JavaScript", 
-    //     "MySQL"
-    //   ]
-    // },
-//     {
-//       type: "list",
-//       message: "What is your preferred method of communication?",
-//       name: "contact",
-//       choices: [
-//         "email",
-//         "phone",
-//         "telekinesis"
-//       ]
-//     }
-//   ]).then(function(data) {
-  
-//     var filename = data.name.toLowerCase().split(' ').join('') + ".md";
-  
-//     fs.writeFile(filename, JSON.stringify(data, null, '\t'), function(err) {
-  
-//       if (err) {
-//         return console.log(err);
-//       }
-  
-//       console.log("Success!");
-  
-//     });
-//   });
-  
